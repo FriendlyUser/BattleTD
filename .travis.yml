@@ -49,7 +49,7 @@ deploy:
 
 - provider: surge
   skip-cleanup: true
-  project: Build/webgl/**/*
+  project: Build/webgl
   domain: dli-battle-td.surge.sh
   on:
     branch:
