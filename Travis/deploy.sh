@@ -40,7 +40,7 @@ git config user.email "travis.ci@bot.com"
 
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.
-git add -A .
+git add .
 git commit -m "Deploy to GitHub Pages: ${SHA}"
 
 git remote rm origin
