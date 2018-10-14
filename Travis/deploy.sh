@@ -21,7 +21,7 @@ SHA=`git rev-parse --verify HEAD`
 rm -rf .gitignore
 git clone $REPO out
 cd out
-git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
+# git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 cd ..
 
 # Clean out existing contents
@@ -34,6 +34,7 @@ cp -R Build/webgl/* out/
 
 # Now let's go have some fun with the cloned repo
 cd out
+echo "About to deploy"
 ls
 git config user.name "Travis CI"
 git config user.email "travis.ci@bot.com"
@@ -45,4 +46,4 @@ git commit -m "Deploy to GitHub Pages: ${SHA}"
 
 git remote rm origin
 git remote add origin https://FriendlyUser:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG 
-git push origin HEAD:$TARGET_BRANCH
+git push origin HEAD:$TARGET_BRANCH --force
