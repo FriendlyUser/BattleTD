@@ -55,3 +55,13 @@ deploy:
     branch:
       - master    
       - stable
+
+- provider: pages
+  skip-cleanup: true
+  github_token: $GITHUB_TOKEN
+  verbose: true 
+  project: Build/webgl
+  on:
+    branch:
+      - master    
+      - stable

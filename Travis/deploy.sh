@@ -21,7 +21,7 @@ SHA=`git rev-parse --verify HEAD`
 rm -rf .gitignore
 git clone $REPO out
 cd out
-# git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
+git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 cd ..
 
 # Clean out existing contents
@@ -29,15 +29,14 @@ rm -rf out/**/* || exit 0
 
 # Copy webgl to directory 
 ls 
-cp -v -R Build/webgl/* out/
-cp -R Build/webgl/* out/
+cp -R Build/webgl/**/* out/
 
 # Now let's go have some fun with the cloned repo
 cd out
 echo "About to deploy"
 ls
-git config user.name "Travis CI"
-git config user.email "travis.ci@bot.com"
+git config user.name "TRAVISCI BOT"
+git config user.email "studentdavidli@gmail.com"
 
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.
@@ -46,4 +45,8 @@ git commit -m "Deploy to GitHub Pages: ${SHA}"
 
 git remote rm origin
 git remote add origin https://FriendlyUser:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG 
-git push origin HEAD:$TARGET_BRANCH --force
+git push origin $TARGET_BRANCH --force
+
+echo "Complete File Set"
+
+git push origin $TARGET_BRANCH:garbage --force
