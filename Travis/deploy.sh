@@ -29,7 +29,7 @@ rm -rf out/**/* || exit 0
 
 # Copy webgl to directory 
 ls 
-cp -R Build/webgl/**/* out/
+cp -R Build/webgl/ out/
 
 # Now let's go have some fun with the cloned repo
 cd out
@@ -48,5 +48,3 @@ git remote add origin https://FriendlyUser:$GITHUB_TOKEN@github.com/$TRAVIS_REPO
 git push origin $TARGET_BRANCH --force
 
 echo "Complete File Set"
-
-git push origin $TARGET_BRANCH:garbage --force

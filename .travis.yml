@@ -20,7 +20,7 @@ before_install:
 - chmod a+x ./Travis/install.sh
 - chmod a+x ./Travis/build.sh
 - chmod a+x ./Travis/tag.sh
-- chmod a+x ./Travis/deploy.sh
+#- chmod a+x ./Travis/deploy.sh
 
 install:
 - ./Travis/install.sh
@@ -30,7 +30,7 @@ script:
 
 after_success:
 - ./Travis/tag.sh
-- ./Travis/deploy.sh
+#- ./Travis/deploy.sh
 
 deploy:
       
