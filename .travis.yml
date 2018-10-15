@@ -1,0 +1,72 @@
+language: objective-c
+
+branches:
+  only:
+  - alfa
+  - beta
+  - stable
+  - master
+
+os: osx
+
+rvm:
+- 2.6
+
+cache:
+  directories:
+  - ./Unity
+
+before_install:
+- chmod a+x ./Travis/install.sh
+- chmod a+x ./Travis/build.sh
+- chmod a+x ./Travis/tag.sh
+- chmod a+x ./Travis/deploy.sh
+- brew install git-lfs
+- git lfs install
+
+install:
+- ./Travis/install.sh
+
+before_script:
+- git lfs pull 
+
+script:
+- ./Travis/build.sh
+
+after_success:
+- ./Travis/tag.sh
+- ./Travis/deploy.sh
+
+deploy:
+      
+- provider: releases
+  api_key: $GITHUB_TOKEN
+  file: 
+  - Build/windows.zip
+  - Build/linux.tar.gz
+  - Build/osx.dmg
+  name: $TRAVIS_BRANCH $(date +'%Y.%m.%d %H:%M')
+  skip_cleanup: true
+  on:
+    branch:
+      - alfa
+    #all_branches: true
+
+- provider: surge
+  skip-cleanup: true
+  project: Build/webgl
+  domain: dli-battle-td.surge.sh
+  on:
+    branch:
+      - master    
+      - stable
+
+- provider: pages
+  skip-cleanup: true
+  github_token: $GITHUB_TOKEN
+  verbose: true 
+  project: Build/webgl
+  on:
+    branch:
+      - master    
+      - stable
