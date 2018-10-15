@@ -47,7 +47,7 @@ git add .gitattributes
 rm -rf travis.yml
 
 git add .
-git commit -m "Deploy to GitHub Pages: ${SHA}"
+git commit -m "Deploy to GitHub Pages: ${SHA} [ci skip]"
 
 git remote rm origin
 git remote add origin https://FriendlyUser:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG 
