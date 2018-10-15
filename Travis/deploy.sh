@@ -44,7 +44,7 @@ git config user.email "studentdavidli@gmail.com"
 # Add large file system for unity web output files
 git lfs track "*.unityweb"
 git add .gitattributes
-
+rm -rf travis.yml
 
 git add .
 git commit -m "Deploy to GitHub Pages: ${SHA}"
