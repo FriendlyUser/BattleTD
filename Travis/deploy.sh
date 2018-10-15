@@ -40,6 +40,12 @@ git config user.email "studentdavidli@gmail.com"
 
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.
+
+# Add large file system for unity web output files
+git lfs track "*.unityweb"
+git add .gitattributes
+
+
 git add .
 git commit -m "Deploy to GitHub Pages: ${SHA}"
 

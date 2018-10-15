@@ -21,9 +21,13 @@ before_install:
 - chmod a+x ./Travis/build.sh
 - chmod a+x ./Travis/tag.sh
 - chmod a+x ./Travis/deploy.sh
+- brew install git-lfs
 
 install:
 - ./Travis/install.sh
+
+before_script:
+- git lfs pull 
 
 script:
 - ./Travis/build.sh
