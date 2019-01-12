@@ -48,19 +48,19 @@ echo "Attempting to build $project for WebGL"
  -quit \
  -executeMethod BuildScript.WebGL
 
-# export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
-# export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
-# export JAVA_HOME=$(/usr/libexec/java_home)
+export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
+export JAVA_HOME=$(/usr/libexec/java_home)
 
-# echo "Attempting to build $project for Android"
-# /Applications/Unity/Unity.app/Contents/MacOS/Unity \
-#   -batchmode \
-#   -nographics \
-#   -silent-crashes \
-#   -logFile \
-#   -projectPath $(pwd)/ \
-#   -quit \
-#   -executeMethod BuildScript.Android
+echo "Attempting to build $project for Android"
+/Applications/Unity/Unity.app/Contents/MacOS/Unity \
+  -batchmode \
+  -nographics \
+  -silent-crashes \
+  -logFile \
+  -projectPath $(pwd)/ \
+  -quit \
+  -executeMethod BuildScript.Android
 
 # echo "Attempting to build $project for iOS"
 # /Applications/Unity/Unity.app/Contents/MacOS/Unity \

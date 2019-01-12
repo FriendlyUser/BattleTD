@@ -45,12 +45,14 @@ deploy:
   - Build/windows.zip
   - Build/linux.tar.gz
   - Build/osx.dmg
+  - Build/*.apk
+  - Build/android.apk
   name: $TRAVIS_BRANCH $(date +'%Y.%m.%d %H:%M')
   skip_cleanup: true
   on:
-    branch:
-      - alfa
-    #all_branches: true
+    #branch:
+    #  - alfa
+    all_branches: true
 
 - provider: surge
   skip-cleanup: true
